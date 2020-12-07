@@ -1,0 +1,948 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBProyectoSkyNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Codigo_Cliente" />
+    </Key>
+    <Property Name="Codigo_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Primer_Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Segundo_Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Primer_Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Segundo_Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Incidencias" Relationship="Self.Incidencias_Cliente_fk" FromRole="Cliente" ToRole="Incidencias" />
+    <NavigationProperty Name="Solicitud_Requerimientos" Relationship="Self.Solicitud_Requerimientos_Cliente_fk" FromRole="Cliente" ToRole="Solicitud_Requerimientos" />
+    <NavigationProperty Name="Telefonos_Clientes" Relationship="Self.Telefonos_Clientes_fk" FromRole="Cliente" ToRole="Telefonos_Clientes" />
+  </EntityType>
+  <EntityType Name="Comentarios_Incidencias">
+    <Key>
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Comentario" />
+    </Key>
+    <Property Name="Codigo_Incidencia" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Incidencias" Relationship="Self.Comentarios_Incidencias_Incidencias_fk" FromRole="Comentarios_Incidencias" ToRole="Incidencias" />
+  </EntityType>
+  <EntityType Name="Comentarios_Requerimientos">
+    <Key>
+      <PropertyRef Name="Codigo_Requerimientos" />
+      <PropertyRef Name="Comentario" />
+    </Key>
+    <Property Name="Codigo_Requerimientos" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Solicitud_Requerimientos" Relationship="Self.Comentarios_Requerimientos_Requerimientos_fk" FromRole="Comentarios_Requerimientos" ToRole="Solicitud_Requerimientos" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Departamento_Tecnico">
+    <Key>
+      <PropertyRef Name="Codigo_Departamento_Tecnico" />
+    </Key>
+    <Property Name="Codigo_Departamento_Tecnico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tecnico_Soporte" Relationship="Self.Tecnico_Soporte_Departamento_Tecnico_fk" FromRole="Departamento_Tecnico" ToRole="Tecnico_Soporte" />
+  </EntityType>
+  <EntityType Name="Especialidad">
+    <Key>
+      <PropertyRef Name="Codigo_Especialidad" />
+    </Key>
+    <Property Name="Codigo_Especialidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_Especialidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tecnico_Soporte" Relationship="Self.Tecnico_Especialidad" FromRole="Especialidad" ToRole="Tecnico_Soporte" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="Codigo_Estado" />
+    </Key>
+    <Property Name="Codigo_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_Estado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Incidencias" Relationship="Self.Incidencias_Estados_fk" FromRole="Estados" ToRole="Incidencias" />
+  </EntityType>
+  <EntityType Name="Incidencias">
+    <Key>
+      <PropertyRef Name="Codigo_Incidencia" />
+    </Key>
+    <Property Name="Codigo_Incidencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo_Receptor" Type="Int32" Nullable="false" />
+    <Property Name="Codigo_Solicitante" Type="Int32" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adjuntos" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo_Tecnico_Asignado" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="Self.Incidencias_Cliente_fk" FromRole="Incidencias" ToRole="Cliente" />
+    <NavigationProperty Name="Comentarios_Incidencias" Relationship="Self.Comentarios_Incidencias_Incidencias_fk" FromRole="Incidencias" ToRole="Comentarios_Incidencias" />
+    <NavigationProperty Name="Estados" Relationship="Self.Incidencias_Estados_fk" FromRole="Incidencias" ToRole="Estados" />
+    <NavigationProperty Name="Receptor_Solicitudes" Relationship="Self.Incidencias_Receptor_Solicitudes_fk" FromRole="Incidencias" ToRole="Receptor_Solicitudes" />
+    <NavigationProperty Name="Tecnico_Soporte" Relationship="Self.Incidencias_Tecnico_Soporte_fk" FromRole="Incidencias" ToRole="Tecnico_Soporte" />
+  </EntityType>
+  <EntityType Name="Perfiles">
+    <Key>
+      <PropertyRef Name="Codigo_Perfil" />
+    </Key>
+    <Property Name="Codigo_Perfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_Perfil" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Receptor_Solicitudes" Relationship="Self.Receptor_Solicitudes_Perfil_fk" FromRole="Perfiles" ToRole="Receptor_Solicitudes" />
+    <NavigationProperty Name="Tecnico_Soporte" Relationship="Self.Tecnicos_Soporte_Perfil_fk" FromRole="Perfiles" ToRole="Tecnico_Soporte" />
+  </EntityType>
+  <EntityType Name="Receptor_Solicitudes">
+    <Key>
+      <PropertyRef Name="Codigo_Receptor" />
+    </Key>
+    <Property Name="Codigo_Receptor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Primer_Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Segundo_Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Primer_Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Segundo_Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DPI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo_Perfil" Type="Int32" Nullable="false" />
+    <Property Name="Pasword" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Incidencias" Relationship="Self.Incidencias_Receptor_Solicitudes_fk" FromRole="Receptor_Solicitudes" ToRole="Incidencias" />
+    <NavigationProperty Name="Perfiles" Relationship="Self.Receptor_Solicitudes_Perfil_fk" FromRole="Receptor_Solicitudes" ToRole="Perfiles" />
+    <NavigationProperty Name="Solicitud_Requerimientos" Relationship="Self.Solicitud_Requerimientos_Receptor_Solicitudes_fk" FromRole="Receptor_Solicitudes" ToRole="Solicitud_Requerimientos" />
+  </EntityType>
+  <EntityType Name="Solicitud_Requerimientos">
+    <Key>
+      <PropertyRef Name="Codigo_Requerimientos" />
+    </Key>
+    <Property Name="Codigo_Requerimientos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo_Receptor" Type="Int32" Nullable="false" />
+    <Property Name="Codigo_Solicitante" Type="Int32" Nullable="false" />
+    <Property Name="Titulo_Requerimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adjuntos" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo_Tecnico_Asignado" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Estado" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="Self.Solicitud_Requerimientos_Cliente_fk" FromRole="Solicitud_Requerimientos" ToRole="Cliente" />
+    <NavigationProperty Name="Comentarios_Requerimientos" Relationship="Self.Comentarios_Requerimientos_Requerimientos_fk" FromRole="Solicitud_Requerimientos" ToRole="Comentarios_Requerimientos" />
+    <NavigationProperty Name="Receptor_Solicitudes" Relationship="Self.Solicitud_Requerimientos_Receptor_Solicitudes_fk" FromRole="Solicitud_Requerimientos" ToRole="Receptor_Solicitudes" />
+    <NavigationProperty Name="Tecnico_Soporte" Relationship="Self.Solicitud_Requerimientos_Tecnico_Soporte_fk" FromRole="Solicitud_Requerimientos" ToRole="Tecnico_Soporte" />
+  </EntityType>
+  <EntityType Name="Tecnico_Soporte">
+    <Key>
+      <PropertyRef Name="Codigo_Tecnico" />
+    </Key>
+    <Property Name="Codigo_Tecnico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Primer_Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Segundo_Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Primer_Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Segundo_Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Correo_Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DPI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo_Departamento_Tecnico" Type="Int32" Nullable="false" />
+    <Property Name="Codigo_Perfil" Type="Int32" Nullable="false" />
+    <Property Name="Pasword" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Departamento_Tecnico" Relationship="Self.Tecnico_Soporte_Departamento_Tecnico_fk" FromRole="Tecnico_Soporte" ToRole="Departamento_Tecnico" />
+    <NavigationProperty Name="Incidencias" Relationship="Self.Incidencias_Tecnico_Soporte_fk" FromRole="Tecnico_Soporte" ToRole="Incidencias" />
+    <NavigationProperty Name="Perfiles" Relationship="Self.Tecnicos_Soporte_Perfil_fk" FromRole="Tecnico_Soporte" ToRole="Perfiles" />
+    <NavigationProperty Name="Solicitud_Requerimientos" Relationship="Self.Solicitud_Requerimientos_Tecnico_Soporte_fk" FromRole="Tecnico_Soporte" ToRole="Solicitud_Requerimientos" />
+    <NavigationProperty Name="Telefonos_Tecnicos" Relationship="Self.Telefonos_Tecnicos_fk" FromRole="Tecnico_Soporte" ToRole="Telefonos_Tecnicos" />
+    <NavigationProperty Name="Especialidad" Relationship="Self.Tecnico_Especialidad" FromRole="Tecnico_Soporte" ToRole="Especialidad" />
+  </EntityType>
+  <EntityType Name="Telefonos_Clientes">
+    <Key>
+      <PropertyRef Name="Codigo_Cliente" />
+      <PropertyRef Name="Numero_Telefono" />
+    </Key>
+    <Property Name="Codigo_Cliente" Type="Int32" Nullable="false" />
+    <Property Name="Numero_Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.Telefonos_Clientes_fk" FromRole="Telefonos_Clientes" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Telefonos_Tecnicos">
+    <Key>
+      <PropertyRef Name="Codigo_Tecnico" />
+      <PropertyRef Name="Numero_Telefono" />
+    </Key>
+    <Property Name="Codigo_Tecnico" Type="Int32" Nullable="false" />
+    <Property Name="Numero_Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tecnico_Soporte" Relationship="Self.Telefonos_Tecnicos_fk" FromRole="Telefonos_Tecnicos" ToRole="Tecnico_Soporte" />
+  </EntityType>
+  <EntityType Name="Vista_por_DeptoTecnico">
+    <Key>
+      <PropertyRef Name="Departamento_Tecnico" />
+      <PropertyRef Name="Usuario_Tecnico" />
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Nombre_Cliente" />
+      <PropertyRef Name="Apellido_Cliente" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Departamento_Tecnico" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario_Tecnico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo_Incidencia" Type="Int32" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido_Cliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vista_por_Estado">
+    <Key>
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Usuario_Tecnico" />
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Nombre_Cliente" />
+      <PropertyRef Name="Apellido_Cliente" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Estado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario_Tecnico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo_Incidencia" Type="Int32" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido_Cliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vista_por_Fecha">
+    <Key>
+      <PropertyRef Name="Fecha_Creacion" />
+      <PropertyRef Name="Usuario_Tecnico" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Nombre_Cliente" />
+      <PropertyRef Name="Apellido_Cliente" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Usuario_Tecnico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido_Cliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vista_por_Solicitante">
+    <Key>
+      <PropertyRef Name="Nombre_Solicitante" />
+      <PropertyRef Name="Apellido_Solicitante" />
+      <PropertyRef Name="Usuario_tecnico" />
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion_Incidencia" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Nombre_Solicitante" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido_Solicitante" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario_tecnico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo_Incidencia" Type="Int32" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion_Incidencia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vista_por_Tecnico">
+    <Key>
+      <PropertyRef Name="Nombre_Tecnico" />
+      <PropertyRef Name="Apellido_Tecnico" />
+      <PropertyRef Name="Usuario_Tecnico" />
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Nombre_Tecnico" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido_Tecnico" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Usuario_Tecnico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Codigo_Incidencia" Type="Int32" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules1">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="Incidencias_Cliente_fk">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Codigo_Solicitante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Solicitud_Requerimientos_Cliente_fk">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Solicitud_Requerimientos" Type="Self.Solicitud_Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Principal>
+      <Dependent Role="Solicitud_Requerimientos">
+        <PropertyRef Name="Codigo_Solicitante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Telefonos_Clientes_fk">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Telefonos_Clientes" Type="Self.Telefonos_Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Principal>
+      <Dependent Role="Telefonos_Clientes">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Comentarios_Incidencias_Incidencias_fk">
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="1" />
+    <End Role="Comentarios_Incidencias" Type="Self.Comentarios_Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Incidencias">
+        <PropertyRef Name="Codigo_Incidencia" />
+      </Principal>
+      <Dependent Role="Comentarios_Incidencias">
+        <PropertyRef Name="Codigo_Incidencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Comentarios_Requerimientos_Requerimientos_fk">
+    <End Role="Solicitud_Requerimientos" Type="Self.Solicitud_Requerimientos" Multiplicity="1" />
+    <End Role="Comentarios_Requerimientos" Type="Self.Comentarios_Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solicitud_Requerimientos">
+        <PropertyRef Name="Codigo_Requerimientos" />
+      </Principal>
+      <Dependent Role="Comentarios_Requerimientos">
+        <PropertyRef Name="Codigo_Requerimientos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tecnico_Soporte_Departamento_Tecnico_fk">
+    <End Role="Departamento_Tecnico" Type="Self.Departamento_Tecnico" Multiplicity="1" />
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento_Tecnico">
+        <PropertyRef Name="Codigo_Departamento_Tecnico" />
+      </Principal>
+      <Dependent Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Departamento_Tecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Incidencias_Estados_fk">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="Codigo_Estado" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Incidencias_Receptor_Solicitudes_fk">
+    <End Role="Receptor_Solicitudes" Type="Self.Receptor_Solicitudes" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receptor_Solicitudes">
+        <PropertyRef Name="Codigo_Receptor" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Codigo_Receptor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Incidencias_Tecnico_Soporte_fk">
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Codigo_Tecnico_Asignado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Receptor_Solicitudes_Perfil_fk">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Receptor_Solicitudes" Type="Self.Receptor_Solicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Codigo_Perfil" />
+      </Principal>
+      <Dependent Role="Receptor_Solicitudes">
+        <PropertyRef Name="Codigo_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tecnicos_Soporte_Perfil_fk">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Codigo_Perfil" />
+      </Principal>
+      <Dependent Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Solicitud_Requerimientos_Receptor_Solicitudes_fk">
+    <End Role="Receptor_Solicitudes" Type="Self.Receptor_Solicitudes" Multiplicity="1" />
+    <End Role="Solicitud_Requerimientos" Type="Self.Solicitud_Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receptor_Solicitudes">
+        <PropertyRef Name="Codigo_Receptor" />
+      </Principal>
+      <Dependent Role="Solicitud_Requerimientos">
+        <PropertyRef Name="Codigo_Receptor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Solicitud_Requerimientos_Tecnico_Soporte_fk">
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="1" />
+    <End Role="Solicitud_Requerimientos" Type="Self.Solicitud_Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Principal>
+      <Dependent Role="Solicitud_Requerimientos">
+        <PropertyRef Name="Codigo_Tecnico_Asignado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Telefonos_Tecnicos_fk">
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="1" />
+    <End Role="Telefonos_Tecnicos" Type="Self.Telefonos_Tecnicos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Principal>
+      <Dependent Role="Telefonos_Tecnicos">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tecnico_Especialidad">
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="*" />
+    <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DBProyectoSkyNetEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Comentarios_Incidencias" EntityType="Self.Comentarios_Incidencias" />
+    <EntitySet Name="Comentarios_Requerimientos" EntityType="Self.Comentarios_Requerimientos" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+    <EntitySet Name="Departamento_Tecnico" EntityType="Self.Departamento_Tecnico" />
+    <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" />
+    <EntitySet Name="Incidencias" EntityType="Self.Incidencias" />
+    <EntitySet Name="Perfiles" EntityType="Self.Perfiles" />
+    <EntitySet Name="Receptor_Solicitudes" EntityType="Self.Receptor_Solicitudes" />
+    <EntitySet Name="Solicitud_Requerimientos" EntityType="Self.Solicitud_Requerimientos" />
+    <EntitySet Name="Tecnico_Soporte" EntityType="Self.Tecnico_Soporte" />
+    <EntitySet Name="Telefonos_Clientes" EntityType="Self.Telefonos_Clientes" />
+    <EntitySet Name="Telefonos_Tecnicos" EntityType="Self.Telefonos_Tecnicos" />
+    <EntitySet Name="Vista_por_DeptoTecnico" EntityType="Self.Vista_por_DeptoTecnico" />
+    <EntitySet Name="Vista_por_Estado" EntityType="Self.Vista_por_Estado" />
+    <EntitySet Name="Vista_por_Fecha" EntityType="Self.Vista_por_Fecha" />
+    <EntitySet Name="Vista_por_Solicitante" EntityType="Self.Vista_por_Solicitante" />
+    <EntitySet Name="Vista_por_Tecnico" EntityType="Self.Vista_por_Tecnico" />
+    <EntitySet Name="database_firewall_rules1" EntityType="Self.database_firewall_rules1" />
+    <AssociationSet Name="Incidencias_Cliente_fk" Association="Self.Incidencias_Cliente_fk">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Solicitud_Requerimientos_Cliente_fk" Association="Self.Solicitud_Requerimientos_Cliente_fk">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Solicitud_Requerimientos" EntitySet="Solicitud_Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Telefonos_Clientes_fk" Association="Self.Telefonos_Clientes_fk">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Telefonos_Clientes" EntitySet="Telefonos_Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="Comentarios_Incidencias_Incidencias_fk" Association="Self.Comentarios_Incidencias_Incidencias_fk">
+      <End Role="Incidencias" EntitySet="Incidencias" />
+      <End Role="Comentarios_Incidencias" EntitySet="Comentarios_Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Comentarios_Requerimientos_Requerimientos_fk" Association="Self.Comentarios_Requerimientos_Requerimientos_fk">
+      <End Role="Solicitud_Requerimientos" EntitySet="Solicitud_Requerimientos" />
+      <End Role="Comentarios_Requerimientos" EntitySet="Comentarios_Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Tecnico_Soporte_Departamento_Tecnico_fk" Association="Self.Tecnico_Soporte_Departamento_Tecnico_fk">
+      <End Role="Departamento_Tecnico" EntitySet="Departamento_Tecnico" />
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+    </AssociationSet>
+    <AssociationSet Name="Incidencias_Estados_fk" Association="Self.Incidencias_Estados_fk">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Incidencias_Receptor_Solicitudes_fk" Association="Self.Incidencias_Receptor_Solicitudes_fk">
+      <End Role="Receptor_Solicitudes" EntitySet="Receptor_Solicitudes" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Incidencias_Tecnico_Soporte_fk" Association="Self.Incidencias_Tecnico_Soporte_fk">
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Receptor_Solicitudes_Perfil_fk" Association="Self.Receptor_Solicitudes_Perfil_fk">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Receptor_Solicitudes" EntitySet="Receptor_Solicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="Tecnicos_Soporte_Perfil_fk" Association="Self.Tecnicos_Soporte_Perfil_fk">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+    </AssociationSet>
+    <AssociationSet Name="Solicitud_Requerimientos_Receptor_Solicitudes_fk" Association="Self.Solicitud_Requerimientos_Receptor_Solicitudes_fk">
+      <End Role="Receptor_Solicitudes" EntitySet="Receptor_Solicitudes" />
+      <End Role="Solicitud_Requerimientos" EntitySet="Solicitud_Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Solicitud_Requerimientos_Tecnico_Soporte_fk" Association="Self.Solicitud_Requerimientos_Tecnico_Soporte_fk">
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+      <End Role="Solicitud_Requerimientos" EntitySet="Solicitud_Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Telefonos_Tecnicos_fk" Association="Self.Telefonos_Tecnicos_fk">
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+      <End Role="Telefonos_Tecnicos" EntitySet="Telefonos_Tecnicos" />
+    </AssociationSet>
+    <AssociationSet Name="Tecnico_Especialidad" Association="Self.Tecnico_Especialidad">
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+      <End Role="Especialidad" EntitySet="Especialidad" />
+    </AssociationSet>
+    <FunctionImport Name="sp_actualizar_cliente">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Prim_Nombre" Mode="In" Type="String" />
+      <Parameter Name="Seg_Nombre" Mode="In" Type="String" />
+      <Parameter Name="Prim_Apellido" Mode="In" Type="String" />
+      <Parameter Name="Seg_Apellido" Mode="In" Type="String" />
+      <Parameter Name="str_direccion" Mode="In" Type="String" />
+      <Parameter Name="st_corr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_deptoTecnico">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Nomb" Mode="In" Type="String" />
+      <Parameter Name="direc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_Estado">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_incidencia">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="codres" Mode="In" Type="Int32" />
+      <Parameter Name="codsol" Mode="In" Type="Int32" />
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="adj" Mode="In" Type="String" />
+      <Parameter Name="cod_tec" Mode="In" Type="Int32" />
+      <Parameter Name="fech" Mode="In" Type="DateTime" />
+      <Parameter Name="est" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_Perfil">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="descpr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_receptor">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Prim_Nombre" Mode="In" Type="String" />
+      <Parameter Name="Seg_Nombre" Mode="In" Type="String" />
+      <Parameter Name="Prim_Apellido" Mode="In" Type="String" />
+      <Parameter Name="Seg_Apellido" Mode="In" Type="String" />
+      <Parameter Name="str_direccion" Mode="In" Type="String" />
+      <Parameter Name="fech" Mode="In" Type="DateTime" />
+      <Parameter Name="corr" Mode="In" Type="String" />
+      <Parameter Name="dp" Mode="In" Type="String" />
+      <Parameter Name="codper" Mode="In" Type="Int32" />
+      <Parameter Name="pas" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_solicitud_requimientos">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="codrecep" Mode="In" Type="Int32" />
+      <Parameter Name="codsol" Mode="In" Type="Int32" />
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="adj" Mode="In" Type="String" />
+      <Parameter Name="cod_tec" Mode="In" Type="Int32" />
+      <Parameter Name="fech" Mode="In" Type="DateTime" />
+      <Parameter Name="est" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_tecnico">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Prim_Nombre" Mode="In" Type="String" />
+      <Parameter Name="Seg_Nombre" Mode="In" Type="String" />
+      <Parameter Name="Prim_Apellido" Mode="In" Type="String" />
+      <Parameter Name="Seg_Apellido" Mode="In" Type="String" />
+      <Parameter Name="str_direccion" Mode="In" Type="String" />
+      <Parameter Name="fecha_nac" Mode="In" Type="DateTime" />
+      <Parameter Name="corr" Mode="In" Type="String" />
+      <Parameter Name="dp" Mode="In" Type="String" />
+      <Parameter Name="coddepa" Mode="In" Type="Int32" />
+      <Parameter Name="codperf" Mode="In" Type="Int32" />
+      <Parameter Name="pas" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_telCliente">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="numtel" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_telTecnico">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="numtel" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_clienteID">
+      <Parameter Name="primnomb" Mode="In" Type="String" />
+      <Parameter Name="segnomb" Mode="In" Type="String" />
+      <Parameter Name="primapellido" Mode="In" Type="String" />
+      <Parameter Name="segapellido" Mode="In" Type="String" />
+      <Parameter Name="direcc" Mode="In" Type="String" />
+      <Parameter Name="corr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_Comentario_incidencia">
+      <Parameter Name="cod" Mode="In" Type="Int32" />
+      <Parameter Name="com" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_Comentario_solicitud">
+      <Parameter Name="cod" Mode="In" Type="Int32" />
+      <Parameter Name="com" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_DeptoTecnico">
+      <Parameter Name="nomb" Mode="In" Type="String" />
+      <Parameter Name="direcc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_estados">
+      <Parameter Name="descest" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_incidencia">
+      <Parameter Name="codrecept" Mode="In" Type="Int32" />
+      <Parameter Name="codsol" Mode="In" Type="Int32" />
+      <Parameter Name="tit" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="adj" Mode="In" Type="String" />
+      <Parameter Name="codtec" Mode="In" Type="Int32" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="est" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_perfil">
+      <Parameter Name="perf" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_receptor">
+      <Parameter Name="primnomb" Mode="In" Type="String" />
+      <Parameter Name="segnomb" Mode="In" Type="String" />
+      <Parameter Name="primapellido" Mode="In" Type="String" />
+      <Parameter Name="segapellido" Mode="In" Type="String" />
+      <Parameter Name="direcc" Mode="In" Type="String" />
+      <Parameter Name="fech" Mode="In" Type="DateTime" />
+      <Parameter Name="corr" Mode="In" Type="String" />
+      <Parameter Name="dp" Mode="In" Type="String" />
+      <Parameter Name="codper" Mode="In" Type="Int32" />
+      <Parameter Name="pas" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_solicitudRequerimientos">
+      <Parameter Name="codrep" Mode="In" Type="Int32" />
+      <Parameter Name="codsol" Mode="In" Type="Int32" />
+      <Parameter Name="titl" Mode="In" Type="String" />
+      <Parameter Name="desc" Mode="In" Type="String" />
+      <Parameter Name="adj" Mode="In" Type="String" />
+      <Parameter Name="codtec" Mode="In" Type="Int32" />
+      <Parameter Name="fech" Mode="In" Type="DateTime" />
+      <Parameter Name="est" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_tecnico">
+      <Parameter Name="primnomb" Mode="In" Type="String" />
+      <Parameter Name="segnomb" Mode="In" Type="String" />
+      <Parameter Name="primapellido" Mode="In" Type="String" />
+      <Parameter Name="segapellido" Mode="In" Type="String" />
+      <Parameter Name="direcc" Mode="In" Type="String" />
+      <Parameter Name="fech" Mode="In" Type="DateTime" />
+      <Parameter Name="corr" Mode="In" Type="String" />
+      <Parameter Name="dp" Mode="In" Type="String" />
+      <Parameter Name="coddepa" Mode="In" Type="Int32" />
+      <Parameter Name="codperf" Mode="In" Type="Int32" />
+      <Parameter Name="pas" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_TelCliente">
+      <Parameter Name="cod" Mode="In" Type="Int32" />
+      <Parameter Name="tel" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_Teltecnico">
+      <Parameter Name="cod" Mode="In" Type="Int32" />
+      <Parameter Name="tel" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_clientesID" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_clientesID_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_deptotecnicoID" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_deptotecnicoID_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_estados" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_estados_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_incidenciasID" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_incidenciasID_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_perfiles" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_perfiles_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_por_DeptoTecnico" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_por_DeptoTecnico_Result)">
+      <Parameter Name="depa" Mode="In" Type="String" />
+      <Parameter Name="usu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_por_estado" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_por_estado_Result)">
+      <Parameter Name="est" Mode="In" Type="String" />
+      <Parameter Name="usu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_por_fecha" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_por_fecha_Result)">
+      <Parameter Name="fech" Mode="In" Type="DateTime" />
+      <Parameter Name="usu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_por_solicitante" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_por_solicitante_Result)">
+      <Parameter Name="nomb" Mode="In" Type="String" />
+      <Parameter Name="ape" Mode="In" Type="String" />
+      <Parameter Name="usu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_por_tecnico" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_por_tecnico_Result)">
+      <Parameter Name="nomb" Mode="In" Type="String" />
+      <Parameter Name="ape" Mode="In" Type="String" />
+      <Parameter Name="usu" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_receptorID" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_receptorID_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_solicitudRequerimientosID" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_solicitudRequerimientosID_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_tecnicoID" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_tecnicoID_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ver_todosclientes" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_todosclientes_Result)" />
+    <FunctionImport Name="sp_ver_todosdeptotecnico" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_todosdeptotecnico_Result)" />
+    <FunctionImport Name="sp_ver_todosestados" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_todosestados_Result)" />
+    <FunctionImport Name="sp_ver_todosincidencias" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_todosincidencias_Result)" />
+    <FunctionImport Name="sp_ver_todosperfiles" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_todosperfiles_Result)" />
+    <FunctionImport Name="sp_ver_todosreceptor" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_todosreceptor_Result)" />
+    <FunctionImport Name="sp_ver_todossolicitudRequerimientos" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_todossolicitudRequerimientos_Result)" />
+    <FunctionImport Name="sp_ver_todoTecnicos" ReturnType="Collection(DBProyectoSkyNetModel.sp_ver_todoTecnicos_Result)" />
+  </EntityContainer>
+  <ComplexType Name="sp_ver_clientesID_Result">
+    <Property Type="Int32" Name="Codigo_Cliente" Nullable="false" />
+    <Property Type="String" Name="Primer_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Primer_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_deptotecnicoID_Result">
+    <Property Type="Int32" Name="Codigo_Departamento_Tecnico" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_estados_Result">
+    <Property Type="Int32" Name="Codigo_Estado" Nullable="false" />
+    <Property Type="String" Name="Descripcion_Estado" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_incidenciasID_Result">
+    <Property Type="Int32" Name="Codigo_Incidencia" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Receptor" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Solicitante" Nullable="false" />
+    <Property Type="String" Name="Titulo_Incidencia" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Adjuntos" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Codigo_Tecnico_Asignado" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Creacion" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_perfiles_Result">
+    <Property Type="Int32" Name="Codigo_Perfil" Nullable="false" />
+    <Property Type="String" Name="Descripcion_Perfil" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_por_DeptoTecnico_Result">
+    <Property Type="String" Name="Departamento_Tecnico" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Usuario_Tecnico" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Codigo_Incidencia" Nullable="false" />
+    <Property Type="String" Name="Titulo_Incidencia" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Nombre_Cliente" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Apellido_Cliente" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Nombre_Receptor" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_por_estado_Result">
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Usuario_Tecnico" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Codigo_Incidencia" Nullable="false" />
+    <Property Type="String" Name="Titulo_Incidencia" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Nombre_Cliente" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Apellido_Cliente" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Nombre_Receptor" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_por_fecha_Result">
+    <Property Type="DateTime" Name="Fecha_Creacion" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Usuario_Tecnico" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Titulo_Incidencia" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Nombre_Cliente" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Apellido_Cliente" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Nombre_Receptor" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_por_solicitante_Result">
+    <Property Type="String" Name="Nombre_Solicitante" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Apellido_Solicitante" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Usuario_tecnico" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Codigo_Incidencia" Nullable="false" />
+    <Property Type="String" Name="Titulo_Incidencia" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion_Incidencia" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Nombre_Receptor" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_por_tecnico_Result">
+    <Property Type="String" Name="Nombre_Tecnico" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Apellido_Tecnico" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Usuario_Tecnico" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Codigo_Incidencia" Nullable="false" />
+    <Property Type="String" Name="Titulo_Incidencia" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Nombre_Receptor" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_receptorID_Result">
+    <Property Type="Int32" Name="Codigo_Receptor" Nullable="false" />
+    <Property Type="String" Name="Primer_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Primer_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Fecha_Nacimiento" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DPI" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="Codigo_Perfil" Nullable="false" />
+    <Property Type="String" Name="Pasword" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_solicitudRequerimientosID_Result">
+    <Property Type="Int32" Name="Codigo_Requerimientos" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Receptor" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Solicitante" Nullable="false" />
+    <Property Type="String" Name="Titulo_Requerimiento" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Adjuntos" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Codigo_Tecnico_Asignado" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Creacion" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_tecnicoID_Result">
+    <Property Type="Int32" Name="Codigo_Tecnico" Nullable="false" />
+    <Property Type="String" Name="Primer_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Primer_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Fecha_Nacimiento" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Correo_Usuario" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DPI" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="Codigo_Departamento_Tecnico" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Perfil" Nullable="false" />
+    <Property Type="String" Name="Pasword" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_todosclientes_Result">
+    <Property Type="Int32" Name="Codigo_Cliente" Nullable="false" />
+    <Property Type="String" Name="Primer_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Primer_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_todosdeptotecnico_Result">
+    <Property Type="Int32" Name="Codigo_Departamento_Tecnico" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_todosestados_Result">
+    <Property Type="Int32" Name="Codigo_Estado" Nullable="false" />
+    <Property Type="String" Name="Descripcion_Estado" Nullable="false" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_todosincidencias_Result">
+    <Property Type="Int32" Name="Codigo_Incidencia" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Receptor" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Solicitante" Nullable="false" />
+    <Property Type="String" Name="Titulo_Incidencia" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Adjuntos" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Codigo_Tecnico_Asignado" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Creacion" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_todosperfiles_Result">
+    <Property Type="Int32" Name="Codigo_Perfil" Nullable="false" />
+    <Property Type="String" Name="Descripcion_Perfil" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_todosreceptor_Result">
+    <Property Type="Int32" Name="Codigo_Receptor" Nullable="false" />
+    <Property Type="String" Name="Primer_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Primer_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Fecha_Nacimiento" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DPI" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="Codigo_Perfil" Nullable="false" />
+    <Property Type="String" Name="Pasword" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_todossolicitudRequerimientos_Result">
+    <Property Type="Int32" Name="Codigo_Requerimientos" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Receptor" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Solicitante" Nullable="false" />
+    <Property Type="String" Name="Titulo_Requerimiento" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Adjuntos" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Codigo_Tecnico_Asignado" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha_Creacion" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ver_todoTecnicos_Result">
+    <Property Type="Int32" Name="Codigo_Tecnico" Nullable="false" />
+    <Property Type="String" Name="Primer_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Nombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Primer_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Segundo_Apellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="Fecha_Nacimiento" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Correo_Usuario" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DPI" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="Codigo_Departamento_Tecnico" Nullable="false" />
+    <Property Type="Int32" Name="Codigo_Perfil" Nullable="false" />
+    <Property Type="String" Name="Pasword" Nullable="false" MaxLength="10" />
+  </ComplexType>
+</Schema>

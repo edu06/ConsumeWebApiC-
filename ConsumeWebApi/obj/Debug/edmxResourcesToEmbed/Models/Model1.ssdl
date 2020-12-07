@@ -1,0 +1,835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBProyectoSkyNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Codigo_Cliente" />
+    </Key>
+    <Property Name="Codigo_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Primer_Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Segundo_Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Primer_Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Segundo_Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comentarios_Incidencias">
+    <Key>
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Comentario" />
+    </Key>
+    <Property Name="Codigo_Incidencia" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comentarios_Requerimientos">
+    <Key>
+      <PropertyRef Name="Codigo_Requerimientos" />
+      <PropertyRef Name="Comentario" />
+    </Key>
+    <Property Name="Codigo_Requerimientos" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departamento_Tecnico">
+    <Key>
+      <PropertyRef Name="Codigo_Departamento_Tecnico" />
+    </Key>
+    <Property Name="Codigo_Departamento_Tecnico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Especialidad">
+    <Key>
+      <PropertyRef Name="Codigo_Especialidad" />
+    </Key>
+    <Property Name="Codigo_Especialidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_Especialidad" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="Codigo_Estado" />
+    </Key>
+    <Property Name="Codigo_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_Estado" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Incidencias">
+    <Key>
+      <PropertyRef Name="Codigo_Incidencia" />
+    </Key>
+    <Property Name="Codigo_Incidencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo_Receptor" Type="int" Nullable="false" />
+    <Property Name="Codigo_Solicitante" Type="int" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Adjuntos" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Codigo_Tecnico_Asignado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="int" />
+  </EntityType>
+  <EntityType Name="Perfiles">
+    <Key>
+      <PropertyRef Name="Codigo_Perfil" />
+    </Key>
+    <Property Name="Codigo_Perfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_Perfil" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Receptor_Solicitudes">
+    <Key>
+      <PropertyRef Name="Codigo_Receptor" />
+    </Key>
+    <Property Name="Codigo_Receptor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Primer_Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Segundo_Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Primer_Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Segundo_Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="datetime" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DPI" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Codigo_Perfil" Type="int" Nullable="false" />
+    <Property Name="Pasword" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Solicitud_Requerimientos">
+    <Key>
+      <PropertyRef Name="Codigo_Requerimientos" />
+    </Key>
+    <Property Name="Codigo_Requerimientos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo_Receptor" Type="int" Nullable="false" />
+    <Property Name="Codigo_Solicitante" Type="int" Nullable="false" />
+    <Property Name="Titulo_Requerimiento" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Adjuntos" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Codigo_Tecnico_Asignado" Type="int" Nullable="false" />
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="int" />
+  </EntityType>
+  <EntityType Name="Tecnico_Especialidad">
+    <Key>
+      <PropertyRef Name="Codigo_Tecnico" />
+      <PropertyRef Name="Codigo_Especialidad" />
+    </Key>
+    <Property Name="Codigo_Tecnico" Type="int" Nullable="false" />
+    <Property Name="Codigo_Especialidad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tecnico_Soporte">
+    <Key>
+      <PropertyRef Name="Codigo_Tecnico" />
+    </Key>
+    <Property Name="Codigo_Tecnico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Primer_Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Segundo_Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Primer_Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Segundo_Apellido" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha_Nacimiento" Type="datetime" Nullable="false" />
+    <Property Name="Correo_Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DPI" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Codigo_Departamento_Tecnico" Type="int" Nullable="false" />
+    <Property Name="Codigo_Perfil" Type="int" Nullable="false" />
+    <Property Name="Pasword" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Telefonos_Clientes">
+    <Key>
+      <PropertyRef Name="Codigo_Cliente" />
+      <PropertyRef Name="Numero_Telefono" />
+    </Key>
+    <Property Name="Codigo_Cliente" Type="int" Nullable="false" />
+    <Property Name="Numero_Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Telefonos_Tecnicos">
+    <Key>
+      <PropertyRef Name="Codigo_Tecnico" />
+      <PropertyRef Name="Numero_Telefono" />
+    </Key>
+    <Property Name="Codigo_Tecnico" Type="int" Nullable="false" />
+    <Property Name="Numero_Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DBProyectoSkyNet.dbo.Vista_por_DeptoTecnico' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Vista_por_DeptoTecnico">
+    <Key>
+      <PropertyRef Name="Departamento_Tecnico" />
+      <PropertyRef Name="Usuario_Tecnico" />
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Nombre_Cliente" />
+      <PropertyRef Name="Apellido_Cliente" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Departamento_Tecnico" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Usuario_Tecnico" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Codigo_Incidencia" Type="int" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Apellido_Cliente" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DBProyectoSkyNet.dbo.Vista_por_Estado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Vista_por_Estado">
+    <Key>
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Usuario_Tecnico" />
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Nombre_Cliente" />
+      <PropertyRef Name="Apellido_Cliente" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Estado" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Usuario_Tecnico" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Codigo_Incidencia" Type="int" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Apellido_Cliente" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DBProyectoSkyNet.dbo.Vista_por_Fecha' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Vista_por_Fecha">
+    <Key>
+      <PropertyRef Name="Fecha_Creacion" />
+      <PropertyRef Name="Usuario_Tecnico" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Nombre_Cliente" />
+      <PropertyRef Name="Apellido_Cliente" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
+    <Property Name="Usuario_Tecnico" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Apellido_Cliente" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DBProyectoSkyNet.dbo.Vista_por_Solicitante' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Vista_por_Solicitante">
+    <Key>
+      <PropertyRef Name="Nombre_Solicitante" />
+      <PropertyRef Name="Apellido_Solicitante" />
+      <PropertyRef Name="Usuario_tecnico" />
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion_Incidencia" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Nombre_Solicitante" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Apellido_Solicitante" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Usuario_tecnico" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Codigo_Incidencia" Type="int" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion_Incidencia" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DBProyectoSkyNet.dbo.Vista_por_Tecnico' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Vista_por_Tecnico">
+    <Key>
+      <PropertyRef Name="Nombre_Tecnico" />
+      <PropertyRef Name="Apellido_Tecnico" />
+      <PropertyRef Name="Usuario_Tecnico" />
+      <PropertyRef Name="Codigo_Incidencia" />
+      <PropertyRef Name="Titulo_Incidencia" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Nombre_Receptor" />
+    </Key>
+    <Property Name="Nombre_Tecnico" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Apellido_Tecnico" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Usuario_Tecnico" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Codigo_Incidencia" Type="int" Nullable="false" />
+    <Property Name="Titulo_Incidencia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Nombre_Receptor" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DBProyectoSkyNet.sys.database_firewall_rules' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="database_firewall_rules1">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="Comentarios_Incidencias_Incidencias_fk">
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="1" />
+    <End Role="Comentarios_Incidencias" Type="Self.Comentarios_Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Incidencias">
+        <PropertyRef Name="Codigo_Incidencia" />
+      </Principal>
+      <Dependent Role="Comentarios_Incidencias">
+        <PropertyRef Name="Codigo_Incidencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Comentarios_Requerimientos_Requerimientos_fk">
+    <End Role="Solicitud_Requerimientos" Type="Self.Solicitud_Requerimientos" Multiplicity="1" />
+    <End Role="Comentarios_Requerimientos" Type="Self.Comentarios_Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solicitud_Requerimientos">
+        <PropertyRef Name="Codigo_Requerimientos" />
+      </Principal>
+      <Dependent Role="Comentarios_Requerimientos">
+        <PropertyRef Name="Codigo_Requerimientos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Incidencias_Cliente_fk">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Codigo_Solicitante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Incidencias_Estados_fk">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="Codigo_Estado" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Incidencias_Receptor_Solicitudes_fk">
+    <End Role="Receptor_Solicitudes" Type="Self.Receptor_Solicitudes" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receptor_Solicitudes">
+        <PropertyRef Name="Codigo_Receptor" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Codigo_Receptor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Incidencias_Tecnico_Soporte_fk">
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Codigo_Tecnico_Asignado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Receptor_Solicitudes_Perfil_fk">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Receptor_Solicitudes" Type="Self.Receptor_Solicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Codigo_Perfil" />
+      </Principal>
+      <Dependent Role="Receptor_Solicitudes">
+        <PropertyRef Name="Codigo_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Solicitud_Requerimientos_Cliente_fk">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Solicitud_Requerimientos" Type="Self.Solicitud_Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Principal>
+      <Dependent Role="Solicitud_Requerimientos">
+        <PropertyRef Name="Codigo_Solicitante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Solicitud_Requerimientos_Receptor_Solicitudes_fk">
+    <End Role="Receptor_Solicitudes" Type="Self.Receptor_Solicitudes" Multiplicity="1" />
+    <End Role="Solicitud_Requerimientos" Type="Self.Solicitud_Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receptor_Solicitudes">
+        <PropertyRef Name="Codigo_Receptor" />
+      </Principal>
+      <Dependent Role="Solicitud_Requerimientos">
+        <PropertyRef Name="Codigo_Receptor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Solicitud_Requerimientos_Tecnico_Soporte_fk">
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="1" />
+    <End Role="Solicitud_Requerimientos" Type="Self.Solicitud_Requerimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Principal>
+      <Dependent Role="Solicitud_Requerimientos">
+        <PropertyRef Name="Codigo_Tecnico_Asignado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tecnico_Especialidad_Tecnico_Soporte_fk">
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="1" />
+    <End Role="Tecnico_Especialidad" Type="Self.Tecnico_Especialidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Principal>
+      <Dependent Role="Tecnico_Especialidad">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tecnico_Especilidad_Especialidad_fk">
+    <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="1" />
+    <End Role="Tecnico_Especialidad" Type="Self.Tecnico_Especialidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Especialidad">
+        <PropertyRef Name="Codigo_Especialidad" />
+      </Principal>
+      <Dependent Role="Tecnico_Especialidad">
+        <PropertyRef Name="Codigo_Especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tecnico_Soporte_Departamento_Tecnico_fk">
+    <End Role="Departamento_Tecnico" Type="Self.Departamento_Tecnico" Multiplicity="1" />
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento_Tecnico">
+        <PropertyRef Name="Codigo_Departamento_Tecnico" />
+      </Principal>
+      <Dependent Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Departamento_Tecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tecnicos_Soporte_Perfil_fk">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Codigo_Perfil" />
+      </Principal>
+      <Dependent Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Telefonos_Clientes_fk">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Telefonos_Clientes" Type="Self.Telefonos_Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Principal>
+      <Dependent Role="Telefonos_Clientes">
+        <PropertyRef Name="Codigo_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Telefonos_Tecnicos_fk">
+    <End Role="Tecnico_Soporte" Type="Self.Tecnico_Soporte" Multiplicity="1" />
+    <End Role="Telefonos_Tecnicos" Type="Self.Telefonos_Tecnicos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tecnico_Soporte">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Principal>
+      <Dependent Role="Telefonos_Tecnicos">
+        <PropertyRef Name="Codigo_Tecnico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_actualizar_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Prim_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Seg_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Prim_Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="Seg_Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="str_direccion" Type="varchar" Mode="In" />
+    <Parameter Name="st_corr" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_deptoTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Nomb" Type="varchar" Mode="In" />
+    <Parameter Name="direc" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_Estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="desc" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_incidencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="codres" Type="int" Mode="In" />
+    <Parameter Name="codsol" Type="int" Mode="In" />
+    <Parameter Name="titulo" Type="varchar" Mode="In" />
+    <Parameter Name="desc" Type="varchar" Mode="In" />
+    <Parameter Name="adj" Type="varchar" Mode="In" />
+    <Parameter Name="cod_tec" Type="int" Mode="In" />
+    <Parameter Name="fech" Type="date" Mode="In" />
+    <Parameter Name="est" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_Perfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="descpr" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_receptor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Prim_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Seg_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Prim_Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="Seg_Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="str_direccion" Type="varchar" Mode="In" />
+    <Parameter Name="fech" Type="date" Mode="In" />
+    <Parameter Name="corr" Type="varchar" Mode="In" />
+    <Parameter Name="dp" Type="varchar" Mode="In" />
+    <Parameter Name="codper" Type="int" Mode="In" />
+    <Parameter Name="pas" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_solicitud_requimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="codrecep" Type="int" Mode="In" />
+    <Parameter Name="codsol" Type="int" Mode="In" />
+    <Parameter Name="titulo" Type="varchar" Mode="In" />
+    <Parameter Name="desc" Type="varchar" Mode="In" />
+    <Parameter Name="adj" Type="varchar" Mode="In" />
+    <Parameter Name="cod_tec" Type="int" Mode="In" />
+    <Parameter Name="fech" Type="date" Mode="In" />
+    <Parameter Name="est" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_tecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Prim_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Seg_Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Prim_Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="Seg_Apellido" Type="varchar" Mode="In" />
+    <Parameter Name="str_direccion" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_nac" Type="date" Mode="In" />
+    <Parameter Name="corr" Type="varchar" Mode="In" />
+    <Parameter Name="dp" Type="varchar" Mode="In" />
+    <Parameter Name="coddepa" Type="int" Mode="In" />
+    <Parameter Name="codperf" Type="int" Mode="In" />
+    <Parameter Name="pas" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_telCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="numtel" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_actualizar_telTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="numtel" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_clienteID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="primnomb" Type="varchar" Mode="In" />
+    <Parameter Name="segnomb" Type="varchar" Mode="In" />
+    <Parameter Name="primapellido" Type="varchar" Mode="In" />
+    <Parameter Name="segapellido" Type="varchar" Mode="In" />
+    <Parameter Name="direcc" Type="varchar" Mode="In" />
+    <Parameter Name="corr" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_Comentario_incidencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cod" Type="int" Mode="In" />
+    <Parameter Name="com" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_Comentario_solicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cod" Type="int" Mode="In" />
+    <Parameter Name="com" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_DeptoTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nomb" Type="varchar" Mode="In" />
+    <Parameter Name="direcc" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_estados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="descest" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_incidencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codrecept" Type="int" Mode="In" />
+    <Parameter Name="codsol" Type="int" Mode="In" />
+    <Parameter Name="tit" Type="varchar" Mode="In" />
+    <Parameter Name="desc" Type="varchar" Mode="In" />
+    <Parameter Name="adj" Type="varchar" Mode="In" />
+    <Parameter Name="codtec" Type="int" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+    <Parameter Name="est" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_perfil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="perf" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_receptor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="primnomb" Type="varchar" Mode="In" />
+    <Parameter Name="segnomb" Type="varchar" Mode="In" />
+    <Parameter Name="primapellido" Type="varchar" Mode="In" />
+    <Parameter Name="segapellido" Type="varchar" Mode="In" />
+    <Parameter Name="direcc" Type="varchar" Mode="In" />
+    <Parameter Name="fech" Type="datetime" Mode="In" />
+    <Parameter Name="corr" Type="varchar" Mode="In" />
+    <Parameter Name="dp" Type="varchar" Mode="In" />
+    <Parameter Name="codper" Type="int" Mode="In" />
+    <Parameter Name="pas" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_solicitudRequerimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codrep" Type="int" Mode="In" />
+    <Parameter Name="codsol" Type="int" Mode="In" />
+    <Parameter Name="titl" Type="varchar" Mode="In" />
+    <Parameter Name="desc" Type="varchar" Mode="In" />
+    <Parameter Name="adj" Type="varchar" Mode="In" />
+    <Parameter Name="codtec" Type="int" Mode="In" />
+    <Parameter Name="fech" Type="datetime" Mode="In" />
+    <Parameter Name="est" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_tecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="primnomb" Type="varchar" Mode="In" />
+    <Parameter Name="segnomb" Type="varchar" Mode="In" />
+    <Parameter Name="primapellido" Type="varchar" Mode="In" />
+    <Parameter Name="segapellido" Type="varchar" Mode="In" />
+    <Parameter Name="direcc" Type="varchar" Mode="In" />
+    <Parameter Name="fech" Type="datetime" Mode="In" />
+    <Parameter Name="corr" Type="varchar" Mode="In" />
+    <Parameter Name="dp" Type="varchar" Mode="In" />
+    <Parameter Name="coddepa" Type="int" Mode="In" />
+    <Parameter Name="codperf" Type="int" Mode="In" />
+    <Parameter Name="pas" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_TelCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cod" Type="int" Mode="In" />
+    <Parameter Name="tel" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_Teltecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cod" Type="int" Mode="In" />
+    <Parameter Name="tel" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_clientesID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_deptotecnicoID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_estados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_incidenciasID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_perfiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_por_DeptoTecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="depa" Type="varchar" Mode="In" />
+    <Parameter Name="usu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_por_estado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="est" Type="varchar" Mode="In" />
+    <Parameter Name="usu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_por_fecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fech" Type="datetime" Mode="In" />
+    <Parameter Name="usu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_por_solicitante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nomb" Type="varchar" Mode="In" />
+    <Parameter Name="ape" Type="varchar" Mode="In" />
+    <Parameter Name="usu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_por_tecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nomb" Type="varchar" Mode="In" />
+    <Parameter Name="ape" Type="varchar" Mode="In" />
+    <Parameter Name="usu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_receptorID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_solicitudRequerimientosID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_tecnicoID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ver_todosclientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ver_todosdeptotecnico" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ver_todosestados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ver_todosincidencias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ver_todosperfiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ver_todosreceptor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ver_todossolicitudRequerimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ver_todoTecnicos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DBProyectoSkyNetModelStoreContainer">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comentarios_Incidencias" EntityType="Self.Comentarios_Incidencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comentarios_Requerimientos" EntityType="Self.Comentarios_Requerimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamento_Tecnico" EntityType="Self.Departamento_Tecnico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Incidencias" EntityType="Self.Incidencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Receptor_Solicitudes" EntityType="Self.Receptor_Solicitudes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Solicitud_Requerimientos" EntityType="Self.Solicitud_Requerimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tecnico_Especialidad" EntityType="Self.Tecnico_Especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tecnico_Soporte" EntityType="Self.Tecnico_Soporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Telefonos_Clientes" EntityType="Self.Telefonos_Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Telefonos_Tecnicos" EntityType="Self.Telefonos_Tecnicos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vista_por_DeptoTecnico" EntityType="Self.Vista_por_DeptoTecnico" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vista_por_DeptoTecnico].[Departamento_Tecnico] AS [Departamento_Tecnico], 
+    [Vista_por_DeptoTecnico].[Usuario_Tecnico] AS [Usuario_Tecnico], 
+    [Vista_por_DeptoTecnico].[Codigo_Incidencia] AS [Codigo_Incidencia], 
+    [Vista_por_DeptoTecnico].[Titulo_Incidencia] AS [Titulo_Incidencia], 
+    [Vista_por_DeptoTecnico].[Descripcion] AS [Descripcion], 
+    [Vista_por_DeptoTecnico].[Nombre_Cliente] AS [Nombre_Cliente], 
+    [Vista_por_DeptoTecnico].[Apellido_Cliente] AS [Apellido_Cliente], 
+    [Vista_por_DeptoTecnico].[Nombre_Receptor] AS [Nombre_Receptor]
+    FROM [dbo].[Vista_por_DeptoTecnico] AS [Vista_por_DeptoTecnico]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vista_por_Estado" EntityType="Self.Vista_por_Estado" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vista_por_Estado].[Estado] AS [Estado], 
+    [Vista_por_Estado].[Usuario_Tecnico] AS [Usuario_Tecnico], 
+    [Vista_por_Estado].[Codigo_Incidencia] AS [Codigo_Incidencia], 
+    [Vista_por_Estado].[Titulo_Incidencia] AS [Titulo_Incidencia], 
+    [Vista_por_Estado].[Descripcion] AS [Descripcion], 
+    [Vista_por_Estado].[Nombre_Cliente] AS [Nombre_Cliente], 
+    [Vista_por_Estado].[Apellido_Cliente] AS [Apellido_Cliente], 
+    [Vista_por_Estado].[Nombre_Receptor] AS [Nombre_Receptor]
+    FROM [dbo].[Vista_por_Estado] AS [Vista_por_Estado]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vista_por_Fecha" EntityType="Self.Vista_por_Fecha" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vista_por_Fecha].[Fecha_Creacion] AS [Fecha_Creacion], 
+    [Vista_por_Fecha].[Usuario_Tecnico] AS [Usuario_Tecnico], 
+    [Vista_por_Fecha].[Titulo_Incidencia] AS [Titulo_Incidencia], 
+    [Vista_por_Fecha].[Descripcion] AS [Descripcion], 
+    [Vista_por_Fecha].[Nombre_Cliente] AS [Nombre_Cliente], 
+    [Vista_por_Fecha].[Apellido_Cliente] AS [Apellido_Cliente], 
+    [Vista_por_Fecha].[Nombre_Receptor] AS [Nombre_Receptor]
+    FROM [dbo].[Vista_por_Fecha] AS [Vista_por_Fecha]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vista_por_Solicitante" EntityType="Self.Vista_por_Solicitante" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vista_por_Solicitante].[Nombre_Solicitante] AS [Nombre_Solicitante], 
+    [Vista_por_Solicitante].[Apellido_Solicitante] AS [Apellido_Solicitante], 
+    [Vista_por_Solicitante].[Usuario_tecnico] AS [Usuario_tecnico], 
+    [Vista_por_Solicitante].[Codigo_Incidencia] AS [Codigo_Incidencia], 
+    [Vista_por_Solicitante].[Titulo_Incidencia] AS [Titulo_Incidencia], 
+    [Vista_por_Solicitante].[Descripcion_Incidencia] AS [Descripcion_Incidencia], 
+    [Vista_por_Solicitante].[Nombre_Receptor] AS [Nombre_Receptor]
+    FROM [dbo].[Vista_por_Solicitante] AS [Vista_por_Solicitante]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vista_por_Tecnico" EntityType="Self.Vista_por_Tecnico" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vista_por_Tecnico].[Nombre_Tecnico] AS [Nombre_Tecnico], 
+    [Vista_por_Tecnico].[Apellido_Tecnico] AS [Apellido_Tecnico], 
+    [Vista_por_Tecnico].[Usuario_Tecnico] AS [Usuario_Tecnico], 
+    [Vista_por_Tecnico].[Codigo_Incidencia] AS [Codigo_Incidencia], 
+    [Vista_por_Tecnico].[Titulo_Incidencia] AS [Titulo_Incidencia], 
+    [Vista_por_Tecnico].[Descripcion] AS [Descripcion], 
+    [Vista_por_Tecnico].[Nombre_Receptor] AS [Nombre_Receptor]
+    FROM [dbo].[Vista_por_Tecnico] AS [Vista_por_Tecnico]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="database_firewall_rules1" EntityType="Self.database_firewall_rules1" store:Type="Views" store:Schema="sys" store:Name="database_firewall_rules">
+      <DefiningQuery>SELECT 
+    [database_firewall_rules1].[id] AS [id], 
+    [database_firewall_rules1].[name] AS [name], 
+    [database_firewall_rules1].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules1].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules1].[create_date] AS [create_date], 
+    [database_firewall_rules1].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules1]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="Comentarios_Incidencias_Incidencias_fk" Association="Self.Comentarios_Incidencias_Incidencias_fk">
+      <End Role="Incidencias" EntitySet="Incidencias" />
+      <End Role="Comentarios_Incidencias" EntitySet="Comentarios_Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Comentarios_Requerimientos_Requerimientos_fk" Association="Self.Comentarios_Requerimientos_Requerimientos_fk">
+      <End Role="Solicitud_Requerimientos" EntitySet="Solicitud_Requerimientos" />
+      <End Role="Comentarios_Requerimientos" EntitySet="Comentarios_Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Incidencias_Cliente_fk" Association="Self.Incidencias_Cliente_fk">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Incidencias_Estados_fk" Association="Self.Incidencias_Estados_fk">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Incidencias_Receptor_Solicitudes_fk" Association="Self.Incidencias_Receptor_Solicitudes_fk">
+      <End Role="Receptor_Solicitudes" EntitySet="Receptor_Solicitudes" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Incidencias_Tecnico_Soporte_fk" Association="Self.Incidencias_Tecnico_Soporte_fk">
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="Receptor_Solicitudes_Perfil_fk" Association="Self.Receptor_Solicitudes_Perfil_fk">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Receptor_Solicitudes" EntitySet="Receptor_Solicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="Solicitud_Requerimientos_Cliente_fk" Association="Self.Solicitud_Requerimientos_Cliente_fk">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Solicitud_Requerimientos" EntitySet="Solicitud_Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Solicitud_Requerimientos_Receptor_Solicitudes_fk" Association="Self.Solicitud_Requerimientos_Receptor_Solicitudes_fk">
+      <End Role="Receptor_Solicitudes" EntitySet="Receptor_Solicitudes" />
+      <End Role="Solicitud_Requerimientos" EntitySet="Solicitud_Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Solicitud_Requerimientos_Tecnico_Soporte_fk" Association="Self.Solicitud_Requerimientos_Tecnico_Soporte_fk">
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+      <End Role="Solicitud_Requerimientos" EntitySet="Solicitud_Requerimientos" />
+    </AssociationSet>
+    <AssociationSet Name="Tecnico_Especialidad_Tecnico_Soporte_fk" Association="Self.Tecnico_Especialidad_Tecnico_Soporte_fk">
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+      <End Role="Tecnico_Especialidad" EntitySet="Tecnico_Especialidad" />
+    </AssociationSet>
+    <AssociationSet Name="Tecnico_Especilidad_Especialidad_fk" Association="Self.Tecnico_Especilidad_Especialidad_fk">
+      <End Role="Especialidad" EntitySet="Especialidad" />
+      <End Role="Tecnico_Especialidad" EntitySet="Tecnico_Especialidad" />
+    </AssociationSet>
+    <AssociationSet Name="Tecnico_Soporte_Departamento_Tecnico_fk" Association="Self.Tecnico_Soporte_Departamento_Tecnico_fk">
+      <End Role="Departamento_Tecnico" EntitySet="Departamento_Tecnico" />
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+    </AssociationSet>
+    <AssociationSet Name="Tecnicos_Soporte_Perfil_fk" Association="Self.Tecnicos_Soporte_Perfil_fk">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+    </AssociationSet>
+    <AssociationSet Name="Telefonos_Clientes_fk" Association="Self.Telefonos_Clientes_fk">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Telefonos_Clientes" EntitySet="Telefonos_Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="Telefonos_Tecnicos_fk" Association="Self.Telefonos_Tecnicos_fk">
+      <End Role="Tecnico_Soporte" EntitySet="Tecnico_Soporte" />
+      <End Role="Telefonos_Tecnicos" EntitySet="Telefonos_Tecnicos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

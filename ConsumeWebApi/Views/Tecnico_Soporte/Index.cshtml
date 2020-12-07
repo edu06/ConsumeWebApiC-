@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ConsumeWebApi.Models.Tecnico_Soporte>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gestion de Tecnicos</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Tecnico", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Primer_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Segundo_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Primer_Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Segundo_Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Nacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo_Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DPI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pasword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento_Tecnico.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Perfiles.Descripcion_Perfil)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Primer_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Segundo_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Primer_Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Segundo_Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Nacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Correo_Usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DPI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pasword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departamento_Tecnico.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Perfiles.Descripcion_Perfil)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Tecnico }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Codigo_Tecnico }) |
+            @Html.ActionLink("Deshabilitar", "Delete", new { id=item.Codigo_Tecnico })
+        </td>
+    </tr>
+}
+
+</table>

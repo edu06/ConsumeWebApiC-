@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>SKYNET</h1>
+    <p class="lead">SISTEMA SKYNET Una Plataforma para la Gestion de Casos e Incidencias </p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Bienvenido &raquo;</a></p>
+</div>
+
+<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Ver Incidencias por Tecnico ", "Index", "Vista_por_Tecnico")</li>
+    <li>@Html.ActionLink("Ver Incidencias por Solicitate", "Index", "Vista_por_Solicitante")</li>
+    <li>@Html.ActionLink("Ver Incidencias por Departamento", "Index", "Vista_Por_DeptoTecnico")</li>
+    <li>@Html.ActionLink("Ver Incidencias por Estados", "Index", "Vista_por_Estados")</li>
+    <li>@Html.ActionLink("Ver Incidencias por Fecha", "Index", "Vista por Fecha")</li>
+        
+
+</ul>

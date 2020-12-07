@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBProyectoSkyNetModelStoreContainer" CdmEntityContainer="DBProyectoSkyNetEntities">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="Codigo_Cliente" ColumnName="Codigo_Cliente" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comentarios_Incidencias">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Comentarios_Incidencias">
+        <MappingFragment StoreEntitySet="Comentarios_Incidencias">
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comentarios_Requerimientos">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Comentarios_Requerimientos">
+        <MappingFragment StoreEntitySet="Comentarios_Requerimientos">
+          <ScalarProperty Name="Codigo_Requerimientos" ColumnName="Codigo_Requerimientos" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamento_Tecnico">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Departamento_Tecnico">
+        <MappingFragment StoreEntitySet="Departamento_Tecnico">
+          <ScalarProperty Name="Codigo_Departamento_Tecnico" ColumnName="Codigo_Departamento_Tecnico" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Especialidad">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Especialidad">
+        <MappingFragment StoreEntitySet="Especialidad">
+          <ScalarProperty Name="Codigo_Especialidad" ColumnName="Codigo_Especialidad" />
+          <ScalarProperty Name="Descripcion_Especialidad" ColumnName="Descripcion_Especialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estados">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Estados">
+        <MappingFragment StoreEntitySet="Estados">
+          <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+          <ScalarProperty Name="Descripcion_Estado" ColumnName="Descripcion_Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incidencias">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Incidencias">
+        <MappingFragment StoreEntitySet="Incidencias">
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Codigo_Solicitante" ColumnName="Codigo_Solicitante" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Adjuntos" ColumnName="Adjuntos" />
+          <ScalarProperty Name="Codigo_Tecnico_Asignado" ColumnName="Codigo_Tecnico_Asignado" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Perfiles">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Perfiles">
+        <MappingFragment StoreEntitySet="Perfiles">
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Descripcion_Perfil" ColumnName="Descripcion_Perfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receptor_Solicitudes">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Receptor_Solicitudes">
+        <MappingFragment StoreEntitySet="Receptor_Solicitudes">
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="DPI" ColumnName="DPI" />
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Pasword" ColumnName="Pasword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Solicitud_Requerimientos">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Solicitud_Requerimientos">
+        <MappingFragment StoreEntitySet="Solicitud_Requerimientos">
+          <ScalarProperty Name="Codigo_Requerimientos" ColumnName="Codigo_Requerimientos" />
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Codigo_Solicitante" ColumnName="Codigo_Solicitante" />
+          <ScalarProperty Name="Titulo_Requerimiento" ColumnName="Titulo_Requerimiento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Adjuntos" ColumnName="Adjuntos" />
+          <ScalarProperty Name="Codigo_Tecnico_Asignado" ColumnName="Codigo_Tecnico_Asignado" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tecnico_Soporte">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Tecnico_Soporte">
+        <MappingFragment StoreEntitySet="Tecnico_Soporte">
+          <ScalarProperty Name="Codigo_Tecnico" ColumnName="Codigo_Tecnico" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Correo_Usuario" ColumnName="Correo_Usuario" />
+          <ScalarProperty Name="DPI" ColumnName="DPI" />
+          <ScalarProperty Name="Codigo_Departamento_Tecnico" ColumnName="Codigo_Departamento_Tecnico" />
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Pasword" ColumnName="Pasword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telefonos_Clientes">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Telefonos_Clientes">
+        <MappingFragment StoreEntitySet="Telefonos_Clientes">
+          <ScalarProperty Name="Codigo_Cliente" ColumnName="Codigo_Cliente" />
+          <ScalarProperty Name="Numero_Telefono" ColumnName="Numero_Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telefonos_Tecnicos">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Telefonos_Tecnicos">
+        <MappingFragment StoreEntitySet="Telefonos_Tecnicos">
+          <ScalarProperty Name="Codigo_Tecnico" ColumnName="Codigo_Tecnico" />
+          <ScalarProperty Name="Numero_Telefono" ColumnName="Numero_Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vista_por_DeptoTecnico">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Vista_por_DeptoTecnico">
+        <MappingFragment StoreEntitySet="Vista_por_DeptoTecnico">
+          <ScalarProperty Name="Departamento_Tecnico" ColumnName="Departamento_Tecnico" />
+          <ScalarProperty Name="Usuario_Tecnico" ColumnName="Usuario_Tecnico" />
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vista_por_Estado">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Vista_por_Estado">
+        <MappingFragment StoreEntitySet="Vista_por_Estado">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Usuario_Tecnico" ColumnName="Usuario_Tecnico" />
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vista_por_Fecha">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Vista_por_Fecha">
+        <MappingFragment StoreEntitySet="Vista_por_Fecha">
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Usuario_Tecnico" ColumnName="Usuario_Tecnico" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vista_por_Solicitante">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Vista_por_Solicitante">
+        <MappingFragment StoreEntitySet="Vista_por_Solicitante">
+          <ScalarProperty Name="Nombre_Solicitante" ColumnName="Nombre_Solicitante" />
+          <ScalarProperty Name="Apellido_Solicitante" ColumnName="Apellido_Solicitante" />
+          <ScalarProperty Name="Usuario_tecnico" ColumnName="Usuario_tecnico" />
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion_Incidencia" ColumnName="Descripcion_Incidencia" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vista_por_Tecnico">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.Vista_por_Tecnico">
+        <MappingFragment StoreEntitySet="Vista_por_Tecnico">
+          <ScalarProperty Name="Nombre_Tecnico" ColumnName="Nombre_Tecnico" />
+          <ScalarProperty Name="Apellido_Tecnico" ColumnName="Apellido_Tecnico" />
+          <ScalarProperty Name="Usuario_Tecnico" ColumnName="Usuario_Tecnico" />
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules1">
+      <EntityTypeMapping TypeName="DBProyectoSkyNetModel.database_firewall_rules1">
+        <MappingFragment StoreEntitySet="database_firewall_rules1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Tecnico_Especialidad" TypeName="DBProyectoSkyNetModel.Tecnico_Especialidad" StoreEntitySet="Tecnico_Especialidad">
+      <EndProperty Name="Tecnico_Soporte">
+        <ScalarProperty Name="Codigo_Tecnico" ColumnName="Codigo_Tecnico" />
+      </EndProperty>
+      <EndProperty Name="Especialidad">
+        <ScalarProperty Name="Codigo_Especialidad" ColumnName="Codigo_Especialidad" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="sp_actualizar_cliente" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_cliente" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_deptoTecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_deptoTecnico" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_Estado" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_Estado" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_incidencia" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_incidencia" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_Perfil" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_Perfil" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_receptor" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_receptor" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_solicitud_requimientos" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_solicitud_requimientos" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_tecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_tecnico" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_telCliente" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_telCliente" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_telTecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_actualizar_telTecnico" />
+    <FunctionImportMapping FunctionImportName="sp_insert_clienteID" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_clienteID" />
+    <FunctionImportMapping FunctionImportName="sp_insert_Comentario_incidencia" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_Comentario_incidencia" />
+    <FunctionImportMapping FunctionImportName="sp_insert_Comentario_solicitud" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_Comentario_solicitud" />
+    <FunctionImportMapping FunctionImportName="sp_insert_DeptoTecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_DeptoTecnico" />
+    <FunctionImportMapping FunctionImportName="sp_insert_estados" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_estados" />
+    <FunctionImportMapping FunctionImportName="sp_insert_incidencia" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_incidencia" />
+    <FunctionImportMapping FunctionImportName="sp_insert_perfil" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_perfil" />
+    <FunctionImportMapping FunctionImportName="sp_insert_receptor" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_receptor" />
+    <FunctionImportMapping FunctionImportName="sp_insert_solicitudRequerimientos" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_solicitudRequerimientos" />
+    <FunctionImportMapping FunctionImportName="sp_insert_tecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_tecnico" />
+    <FunctionImportMapping FunctionImportName="sp_insert_TelCliente" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_TelCliente" />
+    <FunctionImportMapping FunctionImportName="sp_insert_Teltecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_insert_Teltecnico" />
+    <FunctionImportMapping FunctionImportName="sp_ver_clientesID" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_clientesID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_clientesID_Result">
+          <ScalarProperty Name="Codigo_Cliente" ColumnName="Codigo_Cliente" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_deptotecnicoID" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_deptotecnicoID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_deptotecnicoID_Result">
+          <ScalarProperty Name="Codigo_Departamento_Tecnico" ColumnName="Codigo_Departamento_Tecnico" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_estados" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_estados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_estados_Result">
+          <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+          <ScalarProperty Name="Descripcion_Estado" ColumnName="Descripcion_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_incidenciasID" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_incidenciasID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_incidenciasID_Result">
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Codigo_Solicitante" ColumnName="Codigo_Solicitante" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Adjuntos" ColumnName="Adjuntos" />
+          <ScalarProperty Name="Codigo_Tecnico_Asignado" ColumnName="Codigo_Tecnico_Asignado" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_perfiles" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_perfiles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_perfiles_Result">
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Descripcion_Perfil" ColumnName="Descripcion_Perfil" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_por_DeptoTecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_por_DeptoTecnico">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_por_DeptoTecnico_Result">
+          <ScalarProperty Name="Departamento_Tecnico" ColumnName="Departamento_Tecnico" />
+          <ScalarProperty Name="Usuario_Tecnico" ColumnName="Usuario_Tecnico" />
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_por_estado" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_por_estado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_por_estado_Result">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Usuario_Tecnico" ColumnName="Usuario_Tecnico" />
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_por_fecha" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_por_fecha">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_por_fecha_Result">
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Usuario_Tecnico" ColumnName="Usuario_Tecnico" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_por_solicitante" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_por_solicitante">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_por_solicitante_Result">
+          <ScalarProperty Name="Nombre_Solicitante" ColumnName="Nombre_Solicitante" />
+          <ScalarProperty Name="Apellido_Solicitante" ColumnName="Apellido_Solicitante" />
+          <ScalarProperty Name="Usuario_tecnico" ColumnName="Usuario_tecnico" />
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion_Incidencia" ColumnName="Descripcion_Incidencia" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_por_tecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_por_tecnico">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_por_tecnico_Result">
+          <ScalarProperty Name="Nombre_Tecnico" ColumnName="Nombre_Tecnico" />
+          <ScalarProperty Name="Apellido_Tecnico" ColumnName="Apellido_Tecnico" />
+          <ScalarProperty Name="Usuario_Tecnico" ColumnName="Usuario_Tecnico" />
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre_Receptor" ColumnName="Nombre_Receptor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_receptorID" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_receptorID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_receptorID_Result">
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="DPI" ColumnName="DPI" />
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Pasword" ColumnName="Pasword" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_solicitudRequerimientosID" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_solicitudRequerimientosID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_solicitudRequerimientosID_Result">
+          <ScalarProperty Name="Codigo_Requerimientos" ColumnName="Codigo_Requerimientos" />
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Codigo_Solicitante" ColumnName="Codigo_Solicitante" />
+          <ScalarProperty Name="Titulo_Requerimiento" ColumnName="Titulo_Requerimiento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Adjuntos" ColumnName="Adjuntos" />
+          <ScalarProperty Name="Codigo_Tecnico_Asignado" ColumnName="Codigo_Tecnico_Asignado" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_tecnicoID" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_tecnicoID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_tecnicoID_Result">
+          <ScalarProperty Name="Codigo_Tecnico" ColumnName="Codigo_Tecnico" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Correo_Usuario" ColumnName="Correo_Usuario" />
+          <ScalarProperty Name="DPI" ColumnName="DPI" />
+          <ScalarProperty Name="Codigo_Departamento_Tecnico" ColumnName="Codigo_Departamento_Tecnico" />
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Pasword" ColumnName="Pasword" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_todosclientes" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_todosclientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_todosclientes_Result">
+          <ScalarProperty Name="Codigo_Cliente" ColumnName="Codigo_Cliente" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_todosdeptotecnico" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_todosdeptotecnico">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_todosdeptotecnico_Result">
+          <ScalarProperty Name="Codigo_Departamento_Tecnico" ColumnName="Codigo_Departamento_Tecnico" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_todosestados" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_todosestados">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_todosestados_Result">
+          <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+          <ScalarProperty Name="Descripcion_Estado" ColumnName="Descripcion_Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_todosincidencias" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_todosincidencias">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_todosincidencias_Result">
+          <ScalarProperty Name="Codigo_Incidencia" ColumnName="Codigo_Incidencia" />
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Codigo_Solicitante" ColumnName="Codigo_Solicitante" />
+          <ScalarProperty Name="Titulo_Incidencia" ColumnName="Titulo_Incidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Adjuntos" ColumnName="Adjuntos" />
+          <ScalarProperty Name="Codigo_Tecnico_Asignado" ColumnName="Codigo_Tecnico_Asignado" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_todosperfiles" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_todosperfiles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_todosperfiles_Result">
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Descripcion_Perfil" ColumnName="Descripcion_Perfil" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_todosreceptor" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_todosreceptor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_todosreceptor_Result">
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="DPI" ColumnName="DPI" />
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Pasword" ColumnName="Pasword" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_todossolicitudRequerimientos" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_todossolicitudRequerimientos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_todossolicitudRequerimientos_Result">
+          <ScalarProperty Name="Codigo_Requerimientos" ColumnName="Codigo_Requerimientos" />
+          <ScalarProperty Name="Codigo_Receptor" ColumnName="Codigo_Receptor" />
+          <ScalarProperty Name="Codigo_Solicitante" ColumnName="Codigo_Solicitante" />
+          <ScalarProperty Name="Titulo_Requerimiento" ColumnName="Titulo_Requerimiento" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Adjuntos" ColumnName="Adjuntos" />
+          <ScalarProperty Name="Codigo_Tecnico_Asignado" ColumnName="Codigo_Tecnico_Asignado" />
+          <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ver_todoTecnicos" FunctionName="DBProyectoSkyNetModel.Store.sp_ver_todoTecnicos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBProyectoSkyNetModel.sp_ver_todoTecnicos_Result">
+          <ScalarProperty Name="Codigo_Tecnico" ColumnName="Codigo_Tecnico" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Correo_Usuario" ColumnName="Correo_Usuario" />
+          <ScalarProperty Name="DPI" ColumnName="DPI" />
+          <ScalarProperty Name="Codigo_Departamento_Tecnico" ColumnName="Codigo_Departamento_Tecnico" />
+          <ScalarProperty Name="Codigo_Perfil" ColumnName="Codigo_Perfil" />
+          <ScalarProperty Name="Pasword" ColumnName="Pasword" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

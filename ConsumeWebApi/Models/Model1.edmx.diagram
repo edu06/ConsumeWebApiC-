@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="667138a441d541abac24d2b65cef1e6d" Name="Diagram1">
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Cliente" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Comentarios_Incidencias" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Comentarios_Requerimientos" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.database_firewall_rules" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Departamento_Tecnico" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Especialidad" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Estados" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Incidencias" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Perfiles" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Receptor_Solicitudes" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Solicitud_Requerimientos" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Tecnico_Soporte" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Telefonos_Clientes" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Telefonos_Tecnicos" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Vista_por_DeptoTecnico" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Vista_por_Estado" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Vista_por_Fecha" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Vista_por_Solicitante" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.Vista_por_Tecnico" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProyectoSkyNetModel.database_firewall_rules1" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Incidencias_Cliente_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Solicitud_Requerimientos_Cliente_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Telefonos_Clientes_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Comentarios_Incidencias_Incidencias_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Comentarios_Requerimientos_Requerimientos_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Tecnico_Soporte_Departamento_Tecnico_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Incidencias_Estados_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Incidencias_Receptor_Solicitudes_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Incidencias_Tecnico_Soporte_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Receptor_Solicitudes_Perfil_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Tecnicos_Soporte_Perfil_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Solicitud_Requerimientos_Receptor_Solicitudes_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Solicitud_Requerimientos_Tecnico_Soporte_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Telefonos_Tecnicos_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProyectoSkyNetModel.Tecnico_Especialidad" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

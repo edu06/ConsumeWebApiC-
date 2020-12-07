@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ConsumeWebApi.Models.Vista_por_DeptoTecnico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Incidencias por Departamento Tecnico</h2>
+
+
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento_Tecnico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario_Tecnico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo_Incidencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo_Incidencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido_Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_Receptor)
+        </th>
+
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+     
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamento_Tecnico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario_Tecnico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo_Incidencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo_Incidencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido_Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Receptor)
+            </td>
+     
+
+
+
+
+
+
+
+
+         
+        </tr>
+        }
+
+    </table>

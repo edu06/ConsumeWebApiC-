@@ -1,0 +1,82 @@
+﻿@model ConsumeWebApi.Models.Solicitud_Requerimientos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Solicitud_Requerimientos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo_Requerimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo_Requerimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adjuntos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adjuntos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Creacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Primer_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Primer_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Receptor_Solicitudes.Primer_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Receptor_Solicitudes.Primer_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tecnico_Soporte.Primer_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tecnico_Soporte.Primer_Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo_Requerimientos }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

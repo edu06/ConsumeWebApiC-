@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ConsumeWebApi.Models.Departamento_Tecnico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gestion de Departamento_Tecnico</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Departamento Tecnico", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Departamento_Tecnico }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.Codigo_Departamento_Tecnico }) |
+            @Html.ActionLink("Deshabilitar", "Delete", new { id=item.Codigo_Departamento_Tecnico })
+        </td>
+    </tr>
+}
+
+</table>

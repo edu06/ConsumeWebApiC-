@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ConsumeWebApi.Models.Incidencias>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gestion de Incidencias </h2>
+
+<p>
+    @Html.ActionLink("Crear Nueva Incidencia", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo_Incidencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adjuntos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Primer_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estados.Descripcion_Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Receptor_Solicitudes.Primer_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tecnico_Soporte.Primer_Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo_Incidencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adjuntos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Creacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Primer_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estados.Descripcion_Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Receptor_Solicitudes.Primer_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tecnico_Soporte.Primer_Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Modificar", "Edit", new { id=item.Codigo_Incidencia }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.Codigo_Incidencia }) |
+            @Html.ActionLink("Deshabilitar", "Delete", new { id=item.Codigo_Incidencia })
+        </td>
+    </tr>
+}
+
+</table>
